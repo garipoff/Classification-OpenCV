@@ -50,14 +50,14 @@ print("[INFO] Для выхода нажмите Q")
 while True:
 	frame = vs.read()
 	frame = imutils.resize(frame, width=600)
-    # Преобразовываем полученный с камеры кадр
+    	# Преобразовываем полученный с камеры кадр
 	(h, w) = frame.shape[:2]
 	blob = cv2.dnn.blobFromImage(cv2.resize(frame, (300, 300)),
 		0.007843, (300, 300), 127.5)
 
 	net.setInput(blob)
 	classified = net.forward()
-    # Производим классификация кадра
+    	# Производим классификация кадра
 	for i in np.arange(0, classified.shape[2]):
 		assurance = classified[0, 0, i, 2]
 		id = int(classified[0, 0, i, 1])
@@ -74,7 +74,7 @@ while True:
 				audio_encoding = texttospeech.enums.AudioEncoding.MP3)
 
 			# Выполняем запрос преобразования текста в речь при вводе текста с выбранными
-            # параметрами голоса и типом аудио файла
+            		# параметрами голоса и типом аудио файла
 			response = client.synthesize_speech(synthesis_input, voice, audio_config)
 			with open('output.mp3', 'wb') as out:
 				# Сохраняем полученный файл
@@ -84,7 +84,7 @@ while True:
 			pygame.mixer.music.load(name)
 			pygame.mixer.music.play()
 		if assurance > 0.85 and last < 5:
-            # Выводим название классифицированного объекта и процент точности
+            	# Выводим название классифицированного объекта и процент точности
 			label = "{}: {:.2f}%".format(CLASSES[id], assurance * 100)
 			frame = ft.putText(img=frame,
 				text=label,
