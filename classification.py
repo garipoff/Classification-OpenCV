@@ -84,7 +84,7 @@ while True:
 			pygame.mixer.music.load(name)
 			pygame.mixer.music.play()
 		if assurance > 0.85 and last < 5:
-            	# Выводим название классифицированного объекта и процент точности
+            		# Выводим название классифицированного объекта и процент точности
 			label = "{}: {:.2f}%".format(CLASSES[id], assurance * 100)
 			frame = ft.putText(img=frame,
 				text=label,
