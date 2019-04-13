@@ -57,7 +57,7 @@ while True:
 
 	net.setInput(blob)
 	classified = net.forward()
-    	# Производим классификация кадра
+    	# Производим классификацию кадра
 	for i in np.arange(0, classified.shape[2]):
 		assurance = classified[0, 0, i, 2]
 		id = int(classified[0, 0, i, 1])
@@ -69,7 +69,7 @@ while True:
 				language_code = 'ru-RU',
 				ssml_gender = texttospeech.enums.SsmlVoiceGender.FEMALE)
 
-			# Выбираем тип аудиофайла, который хотим вернуть от сервера
+			# Выбираем тип аудиофайла, который хотим вернуть с сервера
 			audio_config = texttospeech.types.AudioConfig(
 				audio_encoding = texttospeech.enums.AudioEncoding.MP3)
 
